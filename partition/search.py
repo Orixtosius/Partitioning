@@ -10,6 +10,37 @@ class SubsetSearcher:
 
         updated_subsets = self.partitioner.partition_with_sum(cumulative_subset, remaining_subset)
         return self.search(*updated_subsets)
+    
+    def search_diff(self, subset):
+        if len(subset) == 2:
+            return [subset[0]], [subset[1]]
+                
+        updated_subsets = self.partitioner.partition_with_differenciating(subset)
+        subsets = self.search_diff(updated_subsets)
+
+        rearranged_updated_subset = self.rearrange_subset(subsets, subset[0], subset[1])
+
+        return rearranged_updated_subset
+    
+    def rearrange_subset(self, subsets: list[list[int]], largest_number: int, second_largest_number: int) -> list[list[int]]:
+        searched_number = largest_number - second_largest_number
+        for s in subsets:
+            if searched_number in s:
+                s.remove(searched_number)
+                s.append(largest_number)             
+            else:
+                s.append(second_largest_number)
+            sorted(s, reverse=True)
+        return subsets
+
+    def execute_diff(self, items: list[int], subset_number: int):
+        self.items = items
+        self.partitioner = Partitioner()
+        self.subset_number = subset_number
+        self.target = sum(self.items) // self.subset_number
+
+        subsets = self.search_diff(items)
+        return subsets
 
     def calculate_discrepancy(self, subset_1, subset_2):
         return sum(subset_1) - sum(subset_2)

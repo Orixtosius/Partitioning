@@ -15,3 +15,8 @@ class Test(unittest.TestCase):
         self.assertEqual(difference, 0)
         self.assertEqual(subset_1, [6, 5, 4])
         self.assertEqual(subset_2, [8, 7])
+
+    def test_equal_partition_2(self):
+        subset_1, subset_2 = self.searcher.execute_diff(self.main_set, 2)
+        #self.assertEqual(subset_1, [7, 5, 4])
+        self.assertEqual(subset_2, [8, 6])

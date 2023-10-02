@@ -11,5 +11,12 @@ class Partitioner:
 
         return cumulative_subset, remaining_subset
     
-    def partition_with_differenciating(self, cumulative_subset, remaining_subset) -> list[list[int]]:
+    def partition_with_differenciating(self, subset: list[int]) -> list[list[int]]:
         """"""
+        largest_number = subset.pop(0)
+        second_largest_number = subset.pop(1)
+        difference = largest_number - second_largest_number
+
+        subset.append(difference)
+
+        return sorted(subset, reverse=True)
