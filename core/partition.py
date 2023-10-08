@@ -1,5 +1,5 @@
 class Partitioner:
-  
+    
     def partition_with_sum(self, cumulative_subset, remaining_subset) -> list[list[int]]:
         """"""    
         largest_number = cumulative_subset[0]
