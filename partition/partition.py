@@ -14,7 +14,7 @@ class Partitioner:
     def partition_with_differenciating(self, subset: list[int]) -> list[list[int]]:
         """"""
         largest_number = subset.pop(0)
-        second_largest_number = subset.pop(1)
+        second_largest_number = subset.pop(0)
         difference = largest_number - second_largest_number
 
         subset.append(difference)

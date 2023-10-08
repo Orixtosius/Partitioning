@@ -13,12 +13,17 @@ class SubsetSearcher:
     
     def search_diff(self, subset):
         if len(subset) == 2:
-            return [subset[0]], [subset[1]]
-                
+            if subset[0] > subset[1]:
+                return [subset[0]], [subset[1]]
+            return [subset[1]], [subset[0]]
+
+        largest = subset[0]
+        second_largest = subset[1]
+        
         updated_subsets = self.partitioner.partition_with_differenciating(subset)
         subsets = self.search_diff(updated_subsets)
 
-        rearranged_updated_subset = self.rearrange_subset(subsets, subset[0], subset[1])
+        rearranged_updated_subset = self.rearrange_subset(subsets, largest, second_largest)
 
         return rearranged_updated_subset
     
