@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from context import core
-from core.search.cumulative_search import CumulativeSearcher
 from core.execution import Executor
 import unittest
 

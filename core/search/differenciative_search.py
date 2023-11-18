@@ -1,5 +1,4 @@
-from ..partition import Partitioner
-from search_interface import Search
+from core.search.search_interface import Search
 
 
 class DifferenciativeSearcher(Search):

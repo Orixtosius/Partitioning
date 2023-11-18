@@ -1,6 +1,5 @@
-from partition import Partitioner
-from search.differenciative_search import DifferenciativeSearcher
-from search.cumulative_search import CumulativeSearcher
+from core.search.differenciative_search import DifferenciativeSearcher
+from core.search.cumulative_search import CumulativeSearcher
 
 
 class Executor:

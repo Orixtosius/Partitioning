@@ -1,5 +1,4 @@
-from ..partition import Partitioner
-from search_interface import Search
+from core.search.search_interface import Search
 
 class CumulativeSearcher(Search):
 
@@ -11,26 +10,6 @@ class CumulativeSearcher(Search):
 
         updated_subsets = self.partitioner.partition_with_sum(cumulative_subset, remaining_subset)
         return self.search(*updated_subsets)
-      
-    # def execute_diff(self, items: list[int], subset_number: int):
-    #     self.items = items
-    #     self.partitioner = Partitioner()
-    #     self.subset_number = subset_number
-    #     self.target = sum(self.items) // self.subset_number
-
-    #     subsets = self.search_diff(items)
-    #     return subsets
-    
-    # def execute(self, items: list[int], subset_number: int):
-    #     self.items = items
-    #     self.partitioner = Partitioner()
-    #     self.subset_number = subset_number
-    #     self.target = sum(self.items) // self.subset_number
-
-    #     primary_subset, secondary_subset = self.search(items, list())
-    #     difference = self.calculate_discrepancy(primary_subset, secondary_subset)
-
-    #     return primary_subset, secondary_subset, difference
 
     def set_subset_number(self, subset_number: int):
         if subset_number < 2:
